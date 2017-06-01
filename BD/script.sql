@@ -18,7 +18,7 @@ editorial TEXT
 );
 DROP TABLE IF EXISTS prestamos;
 CREATE TABLE prestamos (
-id_prestamo INTEGER,
+id_prestamo INTEGER PRIMARY KEY AUTOINCREMENT,
 ISBN_libro TEXT,
 id_socio INTEGER,
 fechaPrestamo NUMERIC,

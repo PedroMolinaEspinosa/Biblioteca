@@ -14,7 +14,7 @@ public class Conexion {
 			Class.forName("org.sqlite.JDBC");
 			try {
 				conexion = DriverManager.
-						getConnection("jdbc:sqlite:script.bd");
+						getConnection("jdbc:sqlite:BD/script.bd");
 			} catch (SQLException e) {
 				System.out.println("Error al acceso de la BD");
 			}
@@ -24,11 +24,15 @@ public class Conexion {
 	}
 	
 	public static Connection getInstance(){
-		if (conexion == null)
+		if (conexion == null){
 			new Conexion();
+			System.out.println("Conexión establecida");
+		}
+		
 		return conexion;
 	}
 	public static void main(String[] args) {
 		Conexion.getInstance();
+		
 	}
 }
