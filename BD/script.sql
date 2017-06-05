@@ -20,10 +20,14 @@ DROP TABLE IF EXISTS prestamos;
 CREATE TABLE prestamos (
 id_prestamo INTEGER PRIMARY KEY AUTOINCREMENT,
 ISBN_libro TEXT,
+titulo_libro TEXT,
+nombre_socio TEXT,
 id_socio INTEGER,
 fechaPrestamo NUMERIC,
 FOREIGN KEY(ISBN_libro) REFERENCES libros(ISBN) ON DELETE CASCADE,
-FOREIGN KEY(id_socio) REFERENCES socios(id_socios) ON DELETE CASCADE
+FOREIGN KEY(id_socio) REFERENCES socios(id_socios) ON DELETE CASCADE,
+FOREIGN KEY(titulo_libro) REFERENCES libros(titulo) ON DELETE CASCADE,
+FOREIGN KEY(nombre_socio) REFERENCES socios(nombre) ON DELETE CASCADE
 );
 
 INSERT INTO socios (nombre,apellidos,telefono,correo) VALUES ("Juan", "Pan Conajos",695934599,"juanga@hotmail.com");
