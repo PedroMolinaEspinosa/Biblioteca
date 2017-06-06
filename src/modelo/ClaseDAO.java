@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class ClaseDAO implements InterfazDAO {
 		try {
 			Statement statement = conexion.createStatement();
 			ResultSet resulset = statement.executeQuery(sql);
-			while(resulset.next()){
+			while (resulset.next()) {
 				int id_socio = resulset.getInt("id_socio");
 				String nombre = resulset.getString("nombre");
 				String apellidos = resulset.getString("apellidos");
@@ -34,6 +35,7 @@ public class ClaseDAO implements InterfazDAO {
 		}
 		return listaSocios;
 	}
+
 	public static void main(String[] args) {
 		ClaseDAO c1 = new ClaseDAO();
 		System.out.println(c1.getListaSocios());
@@ -79,7 +81,6 @@ public class ClaseDAO implements InterfazDAO {
 
 	}
 
-
 	@Override
 	public boolean addLibro(Libros libro) {
 		// TODO Auto-generated method stub
@@ -105,7 +106,7 @@ public class ClaseDAO implements InterfazDAO {
 	public boolean addPrestamo(Prestamos prestamo) {
 		// TODO Auto-generated method stub
 		int resultado = 0;
-		String sql = "INSERT INTO libros VALUES (?,?,?,?,?);";
+		String sql = "INSERT INTO prestamos VALUES (?,?,?,?,?,?);";
 		try {
 			PreparedStatement pStatement = conexion.prepareStatement(sql);
 			pStatement.setInt(1, prestamo.getId_prestamo());
@@ -113,8 +114,9 @@ public class ClaseDAO implements InterfazDAO {
 			pStatement.setString(3, prestamo.getTitulo_libro());
 			pStatement.setString(4, prestamo.getNombre_socio());
 			pStatement.setInt(5, prestamo.getId_socio());
-			pStatement.setDate(5, prestamo.getId_socio());
-			
+			pStatement.setDate(6, (Date) prestamo.getFechaPrestamo());
+			pStatement.setDate(7, (Date) prestamo.getFechaDevolucion());
+
 			resultado = pStatement.executeUpdate();
 
 		} catch (SQLException e) {

@@ -6,10 +6,9 @@ public class Libros {
 	private String autor = "";
 	private int num_paginas = 0;
 	private String editorial = "";
-	
+
 	public Libros(String iSBN, String titulo, String autor, int num_paginas, String editorial) {
-		super();
-		ISBN = iSBN;
+		this.ISBN = iSBN;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.num_paginas = num_paginas;
@@ -61,6 +60,5 @@ public class Libros {
 		return "Libros [ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", num_paginas=" + num_paginas
 				+ ", editorial=" + editorial + "]";
 	}
-	
-	
+
 }
